@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Message Received</title>
+    </head>
+    <body>
+        <h3>Name: </h3>
+            <p>
+                <%= messageInfo.name || 'Not provided'%>
+            </p>
+        <h3>Email: </h3> 
+            <p>
+                <%= messageInfo.email || 'Not provided'%>
+            </p>
+        <h3>Subject: </h3>
+            <p>
+                <%= messageInfo.subject || 'Not provided'%>
+            </p>
+        <h3>Comments: </h3>
+            <p>
+                <%= messageInfo.comments || 'Not provided'%>
+            </p>
+    </body>
+</html>
