@@ -4,6 +4,7 @@ import cors from 'cors';
 import statusCheckRoutes from '../routes/statusCheckRoutes';
 import eventRoutes from '../routes/eventRoutes';
 import messageRoutes from '../routes/messageRoutes';
+import problemRoutes from '../routes/problemRoutes';
 import loggerMiddleware from '../middlewares/loggerMiddleware';
 import corsMiddleware from '../middlewares/corsMiddleware';
 import corsOptions from '../config/corsOptions';
@@ -30,6 +31,7 @@ const serverConnection = {
       app.use(eventRoutes);
       app.use(messageRoutes);
       app.use(statusCheckRoutes);
+      app.use(problemRoutes);
 
       // Start the server
       app.listen(process.env.PORT || 3000);
