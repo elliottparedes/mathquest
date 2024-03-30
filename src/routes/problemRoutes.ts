@@ -1,13 +1,16 @@
 import express from 'express';
 const router = express.Router();
-import eventController from '../controllers/eventController';
+import multer, { Multer } from 'multer';
+
 import problemController from '../controllers/problemController';
-import {ProblemType} from '../types/types';
-import messageController from '../controllers/messageController';
 
+// Initialize multer for file uploads
+const upload: Multer = multer();
 
-router.get('/getProblem', problemController.getProblem);
+router.post('/addProblem',upload.single('file') ,problemController.addStaarProblem);
 
-router.get('/getProblemTypes', (req,res) => {res.send("Here are the problem types" + "addition")});
+router.get('/getStaarProblemsByYear', problemController.getStaarProblemsByYear);
+
+router.delete('/deleteStaarProblem', problemController.deleteStaarProblemById);
 
 export default router;

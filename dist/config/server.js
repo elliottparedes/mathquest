@@ -16,8 +16,6 @@ const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const statusCheckRoutes_1 = __importDefault(require("../routes/statusCheckRoutes"));
-const eventRoutes_1 = __importDefault(require("../routes/eventRoutes"));
-const messageRoutes_1 = __importDefault(require("../routes/messageRoutes"));
 const problemRoutes_1 = __importDefault(require("../routes/problemRoutes"));
 const loggerMiddleware_1 = __importDefault(require("../middlewares/loggerMiddleware"));
 const corsMiddleware_1 = __importDefault(require("../middlewares/corsMiddleware"));
@@ -36,8 +34,6 @@ const serverConnection = {
             // Logger middleware
             app.use(loggerMiddleware_1.default);
             // Routes
-            app.use(eventRoutes_1.default);
-            app.use(messageRoutes_1.default);
             app.use(statusCheckRoutes_1.default);
             app.use(problemRoutes_1.default);
             // Start the server

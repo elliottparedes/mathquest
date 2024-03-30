@@ -2,8 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import statusCheckRoutes from '../routes/statusCheckRoutes';
-import eventRoutes from '../routes/eventRoutes';
-import messageRoutes from '../routes/messageRoutes';
 import problemRoutes from '../routes/problemRoutes';
 import loggerMiddleware from '../middlewares/loggerMiddleware';
 import corsMiddleware from '../middlewares/corsMiddleware';
@@ -28,8 +26,6 @@ const serverConnection = {
       app.use(loggerMiddleware);
       
       // Routes
-      app.use(eventRoutes);
-      app.use(messageRoutes);
       app.use(statusCheckRoutes);
       app.use(problemRoutes);
 
