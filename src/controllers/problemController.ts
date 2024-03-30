@@ -15,8 +15,10 @@ const problemController = {
 
         const params: AWS.S3.PutObjectRequest = {
             Bucket: process.env.AWS_S3_BUCKET_NAME,
-            Key: fileName, // Specify the filename in the S3 bucket
-            Body: imageData // File data to upload
+            Key: fileName + '.png', // Specify the filename in the S3 bucket
+            Body: imageData, // File data to upload
+            ContentType: 'image/png', // adjust content type as per your file type
+            ContentDisposition: 'inline' // set to inline
         };
 
         // Upload file to S3 bucket

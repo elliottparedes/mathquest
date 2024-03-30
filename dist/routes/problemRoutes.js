@@ -10,7 +10,6 @@ const problemController_1 = __importDefault(require("../controllers/problemContr
 // Initialize multer for file uploads
 const upload = (0, multer_1.default)();
 router.post('/addProblem', upload.single('file'), problemController_1.default.addStaarProblem);
-//router.get('/getProblemTypes', (req,res) => {res.send("Here are the problem types" + "addition")});
 router.get('/getStaarProblemsByYear', problemController_1.default.getStaarProblemsByYear);
 router.delete('/deleteStaarProblem', problemController_1.default.deleteStaarProblemById);
 exports.default = router;
