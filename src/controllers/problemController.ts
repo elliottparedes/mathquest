@@ -13,19 +13,19 @@ const problemController = {
             return res.status(400).json({error: 'Missing required field(s)'});
         }
 
-        const params: AWS.S3.PutObjectRequest = {
-            Bucket: process.env.AWS_S3_BUCKET_NAME,
-            Key: fileName + '.png', // Specify the filename in the S3 bucket
-            Body: imageData, // File data to upload
-            ContentType: 'image/png', // adjust content type as per your file type
-            ContentDisposition: 'inline' // set to inline
-        };
+        // const params: AWS.S3.PutObjectRequest = {
+        //     Bucket: process.env.AWS_S3_BUCKET_NAME,
+        //     Key: fileName + '.png', // Specify the filename in the S3 bucket
+        //     Body: imageData, // File data to upload
+        //     ContentType: 'image/png', // adjust content type as per your file type
+        //     ContentDisposition: 'inline' // set to inline
+        // };
 
-        // Upload file to S3 bucket
-        const result = await s3.upload(params).promise();
-        console.log('File uploaded successfully:', result.Location);
+        // // Upload file to S3 bucket
+        // const result = await s3.upload(params).promise();
+        // console.log('File uploaded successfully:', result.Location);
 
-        await problemService.addStaarProblem(instruction, answer, result.Location, standard, difficultyLevel, staarYear, staarQuestionNumber);
+        await problemService.addStaarProblem(instruction, answer, fileName , imageData, standard, difficultyLevel, staarYear, staarQuestionNumber);
 
        res.status(200).json({message: 'Problem created successfully'});
 

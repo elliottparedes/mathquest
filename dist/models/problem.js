@@ -37,6 +37,10 @@ const problemSchema = new mongoose_1.Schema({
         type: String,
         required: false
     },
+    imageFileName: {
+        type: String,
+        required: false
+    },
     standard: {
         type: String
         // some type of hash code

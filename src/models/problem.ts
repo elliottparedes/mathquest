@@ -5,6 +5,7 @@ import { StaarInfo}  from '../types/types';
     instruction: string;
     answer: string;
     imageUrl: string;
+    imageFileName: string;
     standard: string;
     difficultyLevel: string;
     staarInfo: StaarInfo;
@@ -22,6 +23,10 @@ const problemSchema = new Schema<StaarProblem & Document>({
         required:true,
     },
     imageUrl: {
+        type: String,
+        required: false
+    },
+    imageFileName: {
         type: String,
         required: false
     },

@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const problemService_1 = __importDefault(require("../services/problemService"));
-const amazonS3Config_1 = __importDefault(require("../config/amazonS3Config"));
 const problemController = {
     addStaarProblem: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
@@ -22,15 +21,17 @@ const problemController = {
             if (!instruction || !answer || !standard || !difficultyLevel || !staarYear || !staarQuestionNumber || !imageData) {
                 return res.status(400).json({ error: 'Missing required field(s)' });
             }
-            const params = {
-                Bucket: process.env.AWS_S3_BUCKET_NAME,
-                Key: fileName, // Specify the filename in the S3 bucket
-                Body: imageData // File data to upload
-            };
-            // Upload file to S3 bucket
-            const result = yield amazonS3Config_1.default.upload(params).promise();
-            console.log('File uploaded successfully:', result.Location);
-            yield problemService_1.default.addStaarProblem(instruction, answer, result.Location, standard, difficultyLevel, staarYear, staarQuestionNumber);
+            // const params: AWS.S3.PutObjectRequest = {
+            //     Bucket: process.env.AWS_S3_BUCKET_NAME,
+            //     Key: fileName + '.png', // Specify the filename in the S3 bucket
+            //     Body: imageData, // File data to upload
+            //     ContentType: 'image/png', // adjust content type as per your file type
+            //     ContentDisposition: 'inline' // set to inline
+            // };
+            // // Upload file to S3 bucket
+            // const result = await s3.upload(params).promise();
+            // console.log('File uploaded successfully:', result.Location);
+            yield problemService_1.default.addStaarProblem(instruction, answer, fileName, imageData, standard, difficultyLevel, staarYear, staarQuestionNumber);
             res.status(200).json({ message: 'Problem created successfully' });
         }
         catch (error) {
