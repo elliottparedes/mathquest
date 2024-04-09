@@ -61,6 +61,7 @@ const problemService = {
     deleteStaarProblemById: (id) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { imageFileName } = yield problem_1.default.findByIdAndDelete(id);
+            console.log('Problem deleted successfully! ID: ' + id);
             const params = {
                 Bucket: process.env.AWS_S3_BUCKET_NAME,
                 Key: imageFileName + '.png'
